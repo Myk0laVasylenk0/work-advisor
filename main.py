@@ -83,9 +83,9 @@ async def show_next_job(message: types.Message, state: FSMContext):
 
     if job_index < len(jobs):
         job = jobs[job_index]
-        employment_type = job.get('employmenttype', 'N/A')
-        date_posted = job.get('dateposted', 'N/A')
-        message_text = f"Title: {html.bold(job['title'])}\nCompany: {job['company']}\nEmployment type: {employment_type}\nJob was posted: {date_posted}\nLink: {job['jobProviders'][0]['url']}"
+        # employment_type = job.get('employmenttype', 'N/A')
+        # date_posted = job.get('dateposted', 'N/A')
+        message_text = f"Title: {html.bold(job['title'])}\nCompany: {job['company']}\nEmployment type: {job['employmentType']}\nJob was posted: {job['datePosted']}\nLink: {job['jobProviders'][0]['url']}"
         next_button = InlineKeyboardButton(text="Next position", callback_data="next_job")
         save_button = InlineKeyboardButton(text="Save this position", callback_data=f"save_job_{job_index}")
         keyboard = InlineKeyboardMarkup(inline_keyboard=[[next_button, save_button]])
